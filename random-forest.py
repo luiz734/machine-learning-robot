@@ -4,6 +4,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import pandas
 
+# https://github.com/luiz734/machine-learning-robot 
+
 data = pandas.read_csv("DATASET_MobileRobotNav_FabroGustavo.csv")
 data.head()
 
@@ -11,7 +13,6 @@ x = data.drop(columns=["Saída Vel. Linear(m/s)","Saída Vel. Angular (rad/s.hor
 y = data['Saída Vel. Linear(m/s)']
 
 total = 0
-total_sqrt = 0
 for i in range(1000):
    print(i)
    X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=42)
@@ -27,10 +28,8 @@ for i in range(1000):
 
    squared_error = mean_squared_error(y_test, result)
    total += squared_error;
-   total_sqrt += sqrt(squared_error);
 
 print(total / 1000)
-print(total_sqrt / 1000)
 
 
 
